@@ -1,0 +1,6 @@
+name: Katanas
+version: '1.0'
+main: me.greefox.greefox.me.Greefox.Katanas
+api-version: 1.19
+authors: [ GreeFox ]
+description: Adds craftable Katanas!
