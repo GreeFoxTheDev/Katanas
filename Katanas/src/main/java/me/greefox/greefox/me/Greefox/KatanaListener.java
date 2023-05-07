@@ -7,9 +7,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
-import java.util.Objects;
 
 public class KatanaListener implements Listener {
     Katanas plugin;
@@ -20,211 +20,254 @@ public class KatanaListener implements Listener {
 
 
     @EventHandler
-    public void onApplyDiamond(InventoryClickEvent event) {
-        if (event.getCurrentItem().getItemMeta() != null) {
-            if (event.getCurrentItem().getItemMeta().getLocalizedName().equals("diamond_katana")){
-                ItemStack item = event.getCurrentItem();
-                ItemMeta im = item.getItemMeta();
-                List<String> lore = im.getLore();
-                if (item.getItemMeta().hasEnchant(Enchantment.DAMAGE_ALL)) {
-                    int enchLevel = im.getEnchantLevel(Enchantment.DAMAGE_ALL);
-                    int finalDamage = (int) (8.5 + enchLevel);
-                    String finalDamageString = String.valueOf(finalDamage);
-                    String lore0 = lore.get(0);
-                    String lore1 = lore.get(1);
-                    String lore3 = lore.get(3);
+    public void onApplyDiamond(@NotNull InventoryClickEvent event) {
+        if (event.getCurrentItem() != null) {
+            if (event.getCurrentItem().hasItemMeta() && event.getCurrentItem().getItemMeta().hasLocalizedName()) {
+                if (event.getCurrentItem().getItemMeta().getLocalizedName().equals("diamond_katana")) {
+                    ItemStack item = event.getCurrentItem();
+                    ItemMeta im = item.getItemMeta();
+                    List<String> lore = im.getLore();
+                    if (item.getItemMeta().hasEnchant(Enchantment.DAMAGE_ALL)) {
+                        int enchLevel = im.getEnchantLevel(Enchantment.DAMAGE_ALL);
+                        int finalDamage = (int) (8.5 + enchLevel);
+                        String finalDamageString = String.valueOf(finalDamage);
+                        assert lore != null;
+                        String lore0 = lore.get(0);
+                        String lore1 = lore.get(1);
+                        String lore3 = lore.get(3);
 
-                    lore.clear();
-                    lore.add(lore0);
-                    lore.add(lore1);
-                    lore.add(ChatColor.DARK_GREEN + " " + finalDamageString + " Attack Damage");
-                    lore.add(lore3);
-                    im.setLore(lore);
-                    item.setItemMeta(im);
+                        lore.clear();
+                        lore.add(lore0);
+                        lore.add(lore1);
+                        lore.add(ChatColor.DARK_GREEN + " " + finalDamageString + " Attack Damage");
+                        lore.add(lore3);
+                        im.setLore(lore);
+                        item.setItemMeta(im);
+                    }
                 }
             }
         }
     }
 
     @EventHandler
-    public void onApplyLightDiamond(InventoryClickEvent event) {
-        if (event.getCurrentItem().getItemMeta() != null) {
-            if (event.getCurrentItem().getItemMeta().getLocalizedName().equals("light_diamond_katana")){
-                ItemStack item = event.getCurrentItem();
-                ItemMeta im = item.getItemMeta();
-                List<String> lore = im.getLore();
-                if (item.getItemMeta().hasEnchant(Enchantment.DAMAGE_ALL)) {
-                    int enchLevel = im.getEnchantLevel(Enchantment.DAMAGE_ALL);
-                    int finalDamage = (int) (7.5 + enchLevel);
-                    String finalDamageString = String.valueOf(finalDamage);
-                    String lore0 = lore.get(0);
-                    String lore1 = lore.get(1);
-                    String lore3 = lore.get(3);
+    public void onApplyLightDiamond(@NotNull InventoryClickEvent event) {
+        if (event.getCurrentItem() != null) {
+            if (event.getCurrentItem().hasItemMeta() && event.getCurrentItem().getItemMeta().hasLocalizedName()) {
+                if (event.getCurrentItem().getItemMeta() != null) {
+                    if (event.getCurrentItem().getItemMeta().getLocalizedName().equals("light_diamond_katana")) {
+                        ItemStack item = event.getCurrentItem();
+                        ItemMeta im = item.getItemMeta();
+                        List<String> lore = im.getLore();
+                        if (item.getItemMeta().hasEnchant(Enchantment.DAMAGE_ALL)) {
+                            int enchLevel = im.getEnchantLevel(Enchantment.DAMAGE_ALL);
+                            int finalDamage = (int) (7.5 + enchLevel);
+                            String finalDamageString = String.valueOf(finalDamage);
+                            assert lore != null;
+                            String lore0 = lore.get(0);
+                            String lore1 = lore.get(1);
+                            String lore3 = lore.get(3);
 
-                    lore.clear();
-                    lore.add(lore0);
-                    lore.add(lore1);
-                    lore.add(ChatColor.DARK_GREEN + " " + finalDamageString + " Attack Damage");
-                    lore.add(lore3);
-                    im.setLore(lore);
-                    item.setItemMeta(im);
+                            lore.clear();
+                            lore.add(lore0);
+                            lore.add(lore1);
+                            lore.add(ChatColor.DARK_GREEN + " " + finalDamageString + " Attack Damage");
+                            lore.add(lore3);
+                            im.setLore(lore);
+                            item.setItemMeta(im);
+                        }
+                    }
                 }
             }
         }
     }
 
     @EventHandler
-    public void onApplyIron(InventoryClickEvent event) {
-        if (event.getCurrentItem().getItemMeta() != null) {
-            if (event.getCurrentItem().getItemMeta().getLocalizedName().equals("iron_katana")){
-                ItemStack item = event.getCurrentItem();
-                ItemMeta im = item.getItemMeta();
-                List<String> lore = im.getLore();
-                if (item.getItemMeta().hasEnchant(Enchantment.DAMAGE_ALL)) {
-                    int enchLevel = im.getEnchantLevel(Enchantment.DAMAGE_ALL);
-                    int finalDamage = (7 + enchLevel);
-                    String finalDamageString = String.valueOf(finalDamage);
-                    String lore0 = lore.get(0);
-                    String lore1 = lore.get(1);
-                    String lore3 = lore.get(3);
+    public void onApplyIron(@NotNull InventoryClickEvent event) {
+        if (event.getCurrentItem() != null) {
+            if (event.getCurrentItem().hasItemMeta() && event.getCurrentItem().getItemMeta().hasLocalizedName()) {
+                if (event.getCurrentItem().getItemMeta() != null) {
+                    if (event.getCurrentItem().getItemMeta().getLocalizedName().equals("iron_katana")) {
+                        ItemStack item = event.getCurrentItem();
+                        ItemMeta im = item.getItemMeta();
+                        List<String> lore = im.getLore();
+                        if (item.getItemMeta().hasEnchant(Enchantment.DAMAGE_ALL)) {
+                            int enchLevel = im.getEnchantLevel(Enchantment.DAMAGE_ALL);
+                            int finalDamage = (7 + enchLevel);
+                            String finalDamageString = String.valueOf(finalDamage);
+                            assert lore != null;
+                            String lore0 = lore.get(0);
+                            String lore1 = lore.get(1);
+                            String lore3 = lore.get(3);
 
-                    lore.clear();
-                    lore.add(lore0);
-                    lore.add(lore1);
-                    lore.add(ChatColor.DARK_GREEN + " " + finalDamageString + " Attack Damage");
-                    lore.add(lore3);
-                    im.setLore(lore);
-                    item.setItemMeta(im);
+                            lore.clear();
+                            lore.add(lore0);
+                            lore.add(lore1);
+                            lore.add(ChatColor.DARK_GREEN + " " + finalDamageString + " Attack Damage");
+                            lore.add(lore3);
+                            im.setLore(lore);
+                            item.setItemMeta(im);
+                        }
+                    }
                 }
             }
         }
     }
-    @EventHandler
-    public void onApplyLightIron(InventoryClickEvent event) {
-        if (event.getCurrentItem().getItemMeta() != null) {
-            if (event.getCurrentItem().getItemMeta().getLocalizedName().equals("light_iron_katana")){
-                ItemStack item = event.getCurrentItem();
-                ItemMeta im = item.getItemMeta();
-                List<String> lore = im.getLore();
-                if (item.getItemMeta().hasEnchant(Enchantment.DAMAGE_ALL)) {
-                    int enchLevel = im.getEnchantLevel(Enchantment.DAMAGE_ALL);
-                    int finalDamage = (int) (6.5 + enchLevel);
-                    String finalDamageString = String.valueOf(finalDamage);
-                    String lore0 = lore.get(0);
-                    String lore1 = lore.get(1);
-                    String lore3 = lore.get(3);
 
-                    lore.clear();
-                    lore.add(lore0);
-                    lore.add(lore1);
-                    lore.add(ChatColor.DARK_GREEN + " " + finalDamageString + " Attack Damage");
-                    lore.add(lore3);
-                    im.setLore(lore);
-                    item.setItemMeta(im);
+    @EventHandler
+    public void onApplyLightIron(@NotNull InventoryClickEvent event) {
+        if (event.getCurrentItem() != null) {
+            if (event.getCurrentItem().hasItemMeta() && event.getCurrentItem().getItemMeta().hasLocalizedName()) {
+                if (event.getCurrentItem().getItemMeta() != null) {
+                    if (event.getCurrentItem().getItemMeta().getLocalizedName().equals("light_iron_katana")) {
+                        ItemStack item = event.getCurrentItem();
+                        ItemMeta im = item.getItemMeta();
+                        List<String> lore = im.getLore();
+                        if (item.getItemMeta().hasEnchant(Enchantment.DAMAGE_ALL)) {
+                            int enchLevel = im.getEnchantLevel(Enchantment.DAMAGE_ALL);
+                            int finalDamage = (int) (6.5 + enchLevel);
+                            String finalDamageString = String.valueOf(finalDamage);
+                            assert lore != null;
+                            String lore0 = lore.get(0);
+                            String lore1 = lore.get(1);
+                            String lore3 = lore.get(3);
+
+                            lore.clear();
+                            lore.add(lore0);
+                            lore.add(lore1);
+                            lore.add(ChatColor.DARK_GREEN + " " + finalDamageString + " Attack Damage");
+                            lore.add(lore3);
+                            im.setLore(lore);
+                            item.setItemMeta(im);
+                        }
+                    }
                 }
             }
         }
     }
-    @EventHandler
-    public void onApplyGold(InventoryClickEvent event) {
-        if (event.getCurrentItem().getItemMeta() != null) {
-            if (event.getCurrentItem().getItemMeta().getLocalizedName().equals("gold_katana")){
-                ItemStack item = event.getCurrentItem();
-                ItemMeta im = item.getItemMeta();
-                List<String> lore = im.getLore();
-                if (item.getItemMeta().hasEnchant(Enchantment.DAMAGE_ALL)) {
-                    int enchLevel = im.getEnchantLevel(Enchantment.DAMAGE_ALL);
-                    int finalDamage = (7 + enchLevel);
-                    String finalDamageString = String.valueOf(finalDamage);
-                    String lore0 = lore.get(0);
-                    String lore1 = lore.get(1);
-                    String lore3 = lore.get(3);
 
-                    lore.clear();
-                    lore.add(lore0);
-                    lore.add(lore1);
-                    lore.add(ChatColor.DARK_GREEN + " " + finalDamageString + " Attack Damage");
-                    lore.add(lore3);
-                    im.setLore(lore);
-                    item.setItemMeta(im);
+    @EventHandler
+    public void onApplyGold(@NotNull InventoryClickEvent event) {
+        if (event.getCurrentItem() != null) {
+            if (event.getCurrentItem().hasItemMeta() && event.getCurrentItem().getItemMeta().hasLocalizedName()) {
+                if (event.getCurrentItem().getItemMeta() != null) {
+                    if (event.getCurrentItem().getItemMeta().getLocalizedName().equals("gold_katana")) {
+                        ItemStack item = event.getCurrentItem();
+                        ItemMeta im = item.getItemMeta();
+                        List<String> lore = im.getLore();
+                        if (item.getItemMeta().hasEnchant(Enchantment.DAMAGE_ALL)) {
+                            int enchLevel = im.getEnchantLevel(Enchantment.DAMAGE_ALL);
+                            int finalDamage = (7 + enchLevel);
+                            String finalDamageString = String.valueOf(finalDamage);
+                            assert lore != null;
+                            String lore0 = lore.get(0);
+                            String lore1 = lore.get(1);
+                            String lore3 = lore.get(3);
+
+                            lore.clear();
+                            lore.add(lore0);
+                            lore.add(lore1);
+                            lore.add(ChatColor.DARK_GREEN + " " + finalDamageString + " Attack Damage");
+                            lore.add(lore3);
+                            im.setLore(lore);
+                            item.setItemMeta(im);
+                        }
+                    }
                 }
             }
         }
     }
-    @EventHandler
-    public void onApplyLightGold(InventoryClickEvent event) {
-        if (event.getCurrentItem().getItemMeta() != null) {
-            if (event.getCurrentItem().getItemMeta().getLocalizedName().equals("light_gold_katana")){
-                ItemStack item = event.getCurrentItem();
-                ItemMeta im = item.getItemMeta();
-                List<String> lore = im.getLore();
-                if (item.getItemMeta().hasEnchant(Enchantment.DAMAGE_ALL)) {
-                    int enchLevel = im.getEnchantLevel(Enchantment.DAMAGE_ALL);
-                    int finalDamage = (7 + enchLevel);
-                    String finalDamageString = String.valueOf(finalDamage);
-                    String lore0 = lore.get(0);
-                    String lore1 = lore.get(1);
-                    String lore3 = lore.get(3);
 
-                    lore.clear();
-                    lore.add(lore0);
-                    lore.add(lore1);
-                    lore.add(ChatColor.DARK_GREEN + " " + finalDamageString + " Attack Damage");
-                    lore.add(lore3);
-                    im.setLore(lore);
-                    item.setItemMeta(im);
+    @EventHandler
+    public void onApplyLightGold(@NotNull InventoryClickEvent event) {
+        if (event.getCurrentItem() != null) {
+            if (event.getCurrentItem().hasItemMeta() && event.getCurrentItem().getItemMeta().hasLocalizedName()) {
+                if (event.getCurrentItem().getItemMeta() != null) {
+                    if (event.getCurrentItem().getItemMeta().getLocalizedName().equals("light_gold_katana")) {
+                        ItemStack item = event.getCurrentItem();
+                        ItemMeta im = item.getItemMeta();
+                        List<String> lore = im.getLore();
+                        if (item.getItemMeta().hasEnchant(Enchantment.DAMAGE_ALL)) {
+                            int enchLevel = im.getEnchantLevel(Enchantment.DAMAGE_ALL);
+                            int finalDamage = (7 + enchLevel);
+                            String finalDamageString = String.valueOf(finalDamage);
+                            assert lore != null;
+                            String lore0 = lore.get(0);
+                            String lore1 = lore.get(1);
+                            String lore3 = lore.get(3);
+
+                            lore.clear();
+                            lore.add(lore0);
+                            lore.add(lore1);
+                            lore.add(ChatColor.DARK_GREEN + " " + finalDamageString + " Attack Damage");
+                            lore.add(lore3);
+                            im.setLore(lore);
+                            item.setItemMeta(im);
+                        }
+                    }
                 }
             }
         }
     }
-    @EventHandler
-    public void onApplyCopper(InventoryClickEvent event) {
-        if (event.getCurrentItem().getItemMeta() != null) {
-            if (event.getCurrentItem().getItemMeta().getLocalizedName().equals("copper_katana")){
-                ItemStack item = event.getCurrentItem();
-                ItemMeta im = item.getItemMeta();
-                List<String> lore = im.getLore();
-                if (item.getItemMeta().hasEnchant(Enchantment.DAMAGE_ALL)) {
-                    int enchLevel = im.getEnchantLevel(Enchantment.DAMAGE_ALL);
-                    int finalDamage = (8 + enchLevel);
-                    String finalDamageString = String.valueOf(finalDamage);
-                    String lore0 = lore.get(0);
-                    String lore1 = lore.get(1);
-                    String lore3 = lore.get(3);
 
-                    lore.clear();
-                    lore.add(lore0);
-                    lore.add(lore1);
-                    lore.add(ChatColor.DARK_GREEN + " " + finalDamageString + " Attack Damage");
-                    lore.add(lore3);
-                    im.setLore(lore);
-                    item.setItemMeta(im);
+    @EventHandler
+    public void onApplyCopper(@NotNull InventoryClickEvent event) {
+        if (event.getCurrentItem() != null) {
+            if (event.getCurrentItem().hasItemMeta() && event.getCurrentItem().getItemMeta().hasLocalizedName()) {
+                if (event.getCurrentItem().getItemMeta() != null) {
+                    if (event.getCurrentItem().getItemMeta().getLocalizedName().equals("copper_katana")) {
+                        ItemStack item = event.getCurrentItem();
+                        ItemMeta im = item.getItemMeta();
+                        List<String> lore = im.getLore();
+                        if (item.getItemMeta().hasEnchant(Enchantment.DAMAGE_ALL)) {
+                            int enchLevel = im.getEnchantLevel(Enchantment.DAMAGE_ALL);
+                            int finalDamage = (8 + enchLevel);
+                            String finalDamageString = String.valueOf(finalDamage);
+                            assert lore != null;
+                            String lore0 = lore.get(0);
+                            String lore1 = lore.get(1);
+                            String lore3 = lore.get(3);
+
+                            lore.clear();
+                            lore.add(lore0);
+                            lore.add(lore1);
+                            lore.add(ChatColor.DARK_GREEN + " " + finalDamageString + " Attack Damage");
+                            lore.add(lore3);
+                            im.setLore(lore);
+                            item.setItemMeta(im);
+                        }
+                    }
                 }
             }
         }
     }
-    @EventHandler
-    public void onApplyLightCopper(InventoryClickEvent event) {
-        if (event.getCurrentItem().getItemMeta() != null) {
-            if (event.getCurrentItem().getItemMeta().getLocalizedName().equals("light_copper_katana")){
-                ItemStack item = event.getCurrentItem();
-                ItemMeta im = item.getItemMeta();
-                List<String> lore = im.getLore();
-                if (item.getItemMeta().hasEnchant(Enchantment.DAMAGE_ALL)) {
-                    int enchLevel = im.getEnchantLevel(Enchantment.DAMAGE_ALL);
-                    int finalDamage = (7 + enchLevel);
-                    String finalDamageString = String.valueOf(finalDamage);
-                    String lore0 = lore.get(0);
-                    String lore1 = lore.get(1);
-                    String lore3 = lore.get(3);
 
-                    lore.clear();
-                    lore.add(lore0);
-                    lore.add(lore1);
-                    lore.add(ChatColor.DARK_GREEN + " " + finalDamageString + " Attack Damage");
-                    lore.add(lore3);
-                    im.setLore(lore);
-                    item.setItemMeta(im);
+    @EventHandler
+    public void onApplyLightCopper(@NotNull InventoryClickEvent event) {
+        if (event.getCurrentItem() != null) {
+            if (event.getCurrentItem().hasItemMeta() && event.getCurrentItem().getItemMeta().hasLocalizedName()) {
+                if (event.getCurrentItem().getItemMeta() != null) {
+                    if (event.getCurrentItem().getItemMeta().getLocalizedName().equals("light_copper_katana")) {
+                        ItemStack item = event.getCurrentItem();
+                        ItemMeta im = item.getItemMeta();
+                        List<String> lore = im.getLore();
+                        if (item.getItemMeta().hasEnchant(Enchantment.DAMAGE_ALL)) {
+                            int enchLevel = im.getEnchantLevel(Enchantment.DAMAGE_ALL);
+                            int finalDamage = (7 + enchLevel);
+                            String finalDamageString = String.valueOf(finalDamage);
+                            assert lore != null;
+                            String lore0 = lore.get(0);
+                            String lore1 = lore.get(1);
+                            String lore3 = lore.get(3);
+
+                            lore.clear();
+                            lore.add(lore0);
+                            lore.add(lore1);
+                            lore.add(ChatColor.DARK_GREEN + " " + finalDamageString + " Attack Damage");
+                            lore.add(lore3);
+                            im.setLore(lore);
+                            item.setItemMeta(im);
+                        }
+                    }
                 }
             }
         }
