@@ -1,5 +1,6 @@
 package me.greefox.greefox.me.Greefox;
 
+import me.greefox.greefox.me.Greefox.Commands.Give;
 import me.greefox.greefox.me.Greefox.KatanasTypes.Copper;
 import me.greefox.greefox.me.Greefox.KatanasTypes.Diamond;
 import me.greefox.greefox.me.Greefox.KatanasTypes.Gold;
@@ -19,6 +20,8 @@ public final class Katanas extends JavaPlugin {
         console.sendMessage(ChatColor.AQUA + "******************************");
         console.sendMessage(ChatColor.AQUA + "| Katanas have been enabled! |");
         console.sendMessage(ChatColor.AQUA + "******************************");
+        this.getCommand("givekatana").setExecutor(new Give(this));
+        this.getCommand("givekatana").setTabCompleter(new Give(this));
         Diamond.init();
         Gold.init();
         Iron.init();
