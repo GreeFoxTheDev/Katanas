@@ -1,5 +1,11 @@
 package me.greefox.greefox.me.Greefox;
 
+import me.greefox.greefox.me.Greefox.KatanasTypes.Copper;
+import me.greefox.greefox.me.Greefox.KatanasTypes.Diamond;
+import me.greefox.greefox.me.Greefox.KatanasTypes.Gold;
+import me.greefox.greefox.me.Greefox.KatanasTypes.Iron;
+import me.greefox.greefox.me.Greefox.Listeners.KatanaListener;
+import me.greefox.greefox.me.Greefox.Listeners.ResourcepackChecker;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.ConsoleCommandSender;
@@ -18,6 +24,7 @@ public final class Katanas extends JavaPlugin {
         Iron.init();
         Copper.init();
         getServer().getPluginManager().registerEvents(new KatanaListener(this), this);
+        getServer().getPluginManager().registerEvents(new ResourcepackChecker(this), this);
     }
 
     @Override
