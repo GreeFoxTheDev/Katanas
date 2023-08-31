@@ -1,0 +1,10 @@
+katanas:
+  enable-copper-katana:
+  enable-diamond-katana:
+  enable-golden-katana:
+  enable-iron-katana:
+light-katanas:
+  enable-light-copper-katana:
+  enable-light-diamond-katana:
+  enable-light-golden-katana:
+  enable-light-iron-katana:
