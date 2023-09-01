@@ -1,0 +1,13 @@
+me\greefox\greefox\me\Greefox\KatanasTypes\Light\CopperLight.class
+me\greefox\greefox\me\Greefox\Katanas.class
+me\greefox\greefox\me\Greefox\KatanasTypes\Strong\Copper.class
+me\greefox\greefox\me\Greefox\KatanasTypes\Light\DiamondLight.class
+me\greefox\greefox\me\Greefox\Commands\Give.class
+me\greefox\greefox\me\Greefox\Listeners\ResourcepackChecker.class
+me\greefox\greefox\me\Greefox\Listeners\KatanaListener.class
+me\greefox\greefox\me\Greefox\KatanasTypes\Strong\Gold.class
+me\greefox\greefox\me\Greefox\KatanasTypes\Light\IronLight.class
+me\greefox\greefox\me\Greefox\KatanasTypes\Strong\Iron.class
+me\greefox\greefox\me\Greefox\Commands\Reload.class
+me\greefox\greefox\me\Greefox\KatanasTypes\Strong\Diamond.class
+me\greefox\greefox\me\Greefox\KatanasTypes\Light\GoldLight.class
