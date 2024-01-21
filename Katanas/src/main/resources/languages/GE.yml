@@ -1,0 +1,14 @@
+katanas:
+  copper: Copper Katana
+  diamond: Diamond Katana
+  golden: Golden Katana
+  iron: Iron Katana
+light-katanas:
+  copper: Light Copper Katana
+  diamond: Light Diamond Katana
+  golden: Light Golden Katana
+  iron: Light Iron Katana
+item_description:
+  in_main_hand: "When in Main Hand:"
+  att_damage: " Attack Damage"
+  att_speed: " Attack Speed"
