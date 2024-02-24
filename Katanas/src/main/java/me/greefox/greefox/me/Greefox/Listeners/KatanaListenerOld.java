@@ -12,10 +12,10 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class KatanaListener implements Listener {
+public class KatanaListenerOld implements Listener {
     Katanas plugin;
 
-    public KatanaListener(Katanas plugin) {
+    public KatanaListenerOld(Katanas plugin) {
         this.plugin = plugin;
     }
 
