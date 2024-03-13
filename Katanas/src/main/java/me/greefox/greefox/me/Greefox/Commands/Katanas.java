@@ -24,10 +24,12 @@ public class Katanas implements CommandExecutor, TabCompleter {
         if (sender instanceof Player) {
             if (label.equalsIgnoreCase("katanas")) {
                 if (sender.isOp()) {
-                    sender.sendMessage("Katanas plugin commands:");
-                    sender.sendMessage("/givekatana <katana> <player>");
+                    sender.sendMessage(ChatColor.YELLOW + "Katanas by GreeFox");
+                    sender.sendMessage("");
+                    sender.sendMessage("Available commands:");
+                    sender.sendMessage(ChatColor.LIGHT_PURPLE + "/givekatana <katana> <player>");
                     sender.sendMessage("    <player> is optional");
-                    sender.sendMessage("/katanas");
+                    sender.sendMessage(ChatColor.LIGHT_PURPLE + "/katanas");
                     sender.sendMessage("Shows this menu!");
                 } else sender.sendMessage(ChatColor.RED + "You don't have a permission to do that!");
             }

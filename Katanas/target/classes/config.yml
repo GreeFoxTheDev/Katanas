@@ -1,10 +1,75 @@
+language: en_US
+resource-pack:
+  enable-resource-pack: true
+  use-legacy-resourcepack: false
 katanas:
-  enable-copper-katana:
-  enable-diamond-katana:
-  enable-golden-katana:
-  enable-iron-katana:
+  copper:
+    enable: true
+    attack-damage: 7.5
+    attack-speed: 1.2
+
+  diamond:
+    enable: true
+    attack-damage: 8.5
+    attack-speed: 1.2
+
+  golden:
+    enable: true
+    attack-damage: 6.5
+    attack-speed: 1.2
+
+  iron:
+    enable: true
+    attack-damage: 7
+    attack-speed: 1.2
+
+  netherite:
+    enable: true
+    attack-damage: 9.5
+    attack-speed: 1.2
+
+  stone:
+    enable: true
+    attack-damage: 6
+    attack-speed: 1.2
+
+  wooden:
+    enable: true
+    attack-damage: 5.5
+    attack-speed: 1.2
+
 light-katanas:
-  enable-light-copper-katana:
-  enable-light-diamond-katana:
-  enable-light-golden-katana:
-  enable-light-iron-katana:
+  copper:
+    enable: true
+    attack-damage: 6
+    attack-speed: 1.7
+
+  diamond:
+    enable: true
+    attack-damage: 7.5
+    attack-speed: 1.7
+
+  golden:
+    enable: true
+    attack-damage: 5.5
+    attack-speed: 1.7
+
+  iron:
+    enable: true
+    attack-damage: 6.5
+    attack-speed: 1.7
+
+  netherite:
+    enable: true
+    attack-damage: 8.5
+    attack-speed: 1.7
+
+  stone:
+    enable: true
+    attack-damage: 5.5
+    attack-speed: 1.7
+
+  wooden:
+    enable: true
+    attack-damage: 5
+    attack-speed: 1.7

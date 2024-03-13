@@ -7,10 +7,7 @@ import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
-import org.bukkit.inventory.EquipmentSlot;
-import org.bukkit.inventory.ItemFlag;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.ShapedRecipe;
+import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -19,18 +16,20 @@ import java.util.List;
 import java.util.UUID;
 
 import static me.greefox.greefox.me.Greefox.Inits.config;
+import static me.greefox.greefox.me.Greefox.KatanasTypes.Light.DiamondLight.lightDiamondKatana;
 
-public class GoldLight extends JavaPlugin {
-    public static ItemStack lightGoldKatana;
+public class NetheriteLight extends JavaPlugin {
+    public static ItemStack lightNetheriteKatana;
 
     public static void init() {
-        createLightGoldKatana();
+        createLightNetheriteKatana();
     }
-    private static void createLightGoldKatana() {
+
+    private static void createLightNetheriteKatana() {
         ItemStack item = new ItemStack(Material.GOLDEN_SWORD, 1);
         ItemMeta im = item.getItemMeta();
-        im.setDisplayName(ChatColor.WHITE + Katanas.getCurrentLang().getString("light-katanas.golden"));
-        im.setLocalizedName("light_diamond_katana");
+        im.setDisplayName(ChatColor.WHITE + Katanas.getCurrentLang().getString("light-katanas.netherite"));
+        im.setLocalizedName("light_netherite_katana");
         im.setCustomModelData(9);
         im.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
@@ -38,24 +37,25 @@ public class GoldLight extends JavaPlugin {
 
         lore.add("");
         lore.add(ChatColor.GRAY + Katanas.getCurrentLang().getString("item_description.in_main_hand"));
-        String attackDamage = String.valueOf(config.getDouble("light-katanas.golden.attack-damage"));
-        String attackSpeed = String.valueOf(config.getDouble("light-katanas.golden.attack-speed"));
+        String attackDamage = String.valueOf(config.getDouble("light-katanas.netherite.attack-damage"));
+        String attackSpeed = String.valueOf(config.getDouble("light-katanas.netherite.attack-speed"));
         lore.add(ChatColor.DARK_GREEN + " " + attackDamage + Katanas.getCurrentLang().getString("item_description.att_damage"));
         lore.add(ChatColor.DARK_GREEN + " " + attackSpeed + Katanas.getCurrentLang().getString("item_description.att_speed"));
         im.setLore(lore);
 
-        AttributeModifier speed = new AttributeModifier(UUID.randomUUID(), "generic.attackSpeed", -4 + config.getDouble("light-katanas.golden.attack-speed"), AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier speed = new AttributeModifier(UUID.randomUUID(), "generic.attackSpeed", -4 + config.getDouble("light-katanas.netherite.attack-speed"), AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
         im.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, speed);
-        AttributeModifier damage = new AttributeModifier(UUID.randomUUID(), "generic.attackDamage", config.getDouble("light-katanas.golden.attack-damage"), AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier damage = new AttributeModifier(UUID.randomUUID(), "generic.attackDamage", config.getDouble("light-katanas.netherite.attack-damage"), AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
         im.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, damage);
         item.setItemMeta(im);
-        lightGoldKatana = item;
-        ShapedRecipe sr = new ShapedRecipe(NamespacedKey.minecraft("golden_katana_light"), item);
-        sr.shape("  X", " X ", "Z  ");
-        sr.setIngredient('X', Material.GOLD_INGOT);
-        sr.setIngredient('Z', Material.STICK);
-        try {
-            Bukkit.addRecipe(sr);
-        } catch (IllegalStateException ignored) {}
+        lightNetheriteKatana = item;
+        SmithingTransformRecipe smtr = new SmithingTransformRecipe(NamespacedKey.minecraft("netherite_katana_light"), item, new RecipeChoice.MaterialChoice(Material.NETHERITE_UPGRADE_SMITHING_TEMPLATE), new RecipeChoice.ExactChoice(lightDiamondKatana), new RecipeChoice.MaterialChoice(Material.NETHERITE_INGOT));
+
+        if (config.getBoolean("light-katanas.netherite.enable")) {
+            try {
+                Bukkit.addRecipe(smtr);
+            } catch (IllegalStateException ignored) {
+            }
+        }
     }
 }

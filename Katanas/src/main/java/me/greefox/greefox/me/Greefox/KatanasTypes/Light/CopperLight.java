@@ -1,6 +1,6 @@
 package me.greefox.greefox.me.Greefox.KatanasTypes.Light;
 
-import me.greefox.greefox.me.Greefox.KatanaCreator;
+import me.greefox.greefox.me.Greefox.Katanas;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -18,6 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import static me.greefox.greefox.me.Greefox.Inits.config;
+
 public class CopperLight extends JavaPlugin {
     public static ItemStack lightCopperKatana;
 
@@ -28,19 +30,24 @@ public class CopperLight extends JavaPlugin {
     private static void createLightCopperKatana() {
         ItemStack item = new ItemStack(Material.IRON_SWORD, 1);
         ItemMeta im = item.getItemMeta();
-        im.setDisplayName("§fLight Copper Katana");
+        im.setDisplayName(ChatColor.WHITE + Katanas.getCurrentLang().getString("light-katanas.copper"));
         im.setLocalizedName("light_copper_katana");
         im.setCustomModelData(11);
         im.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+
         List<String> lore = new ArrayList<>();
+
         lore.add("");
-        lore.add(ChatColor.GRAY + "When in Main Hand:");
-        lore.add(ChatColor.DARK_GREEN + " 7 Attack Damage");
-        lore.add(ChatColor.DARK_GREEN + " 1.4 Attack Speed");
+        lore.add(ChatColor.GRAY + Katanas.getCurrentLang().getString("item_description.in_main_hand"));
+        String attackDamage = String.valueOf(config.getDouble("light-katanas.copper.attack-damage"));
+        String attackSpeed = String.valueOf(config.getDouble("light-katanas.copper.attack-speed"));
+        lore.add(ChatColor.DARK_GREEN + " " + attackDamage + Katanas.getCurrentLang().getString("item_description.att_damage"));
+        lore.add(ChatColor.DARK_GREEN + " " + attackSpeed + Katanas.getCurrentLang().getString("item_description.att_speed"));
         im.setLore(lore);
-        AttributeModifier speed = new AttributeModifier(UUID.randomUUID(), "generic.attackSpeed", -2.4, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+
+        AttributeModifier speed = new AttributeModifier(UUID.randomUUID(), "generic.attackSpeed", -4 + config.getDouble("light-katanas.copper.attack-speed"), AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
         im.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, speed);
-        AttributeModifier damage = new AttributeModifier(UUID.randomUUID(), "generic.attackDamage", 7, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier damage = new AttributeModifier(UUID.randomUUID(), "generic.attackDamage", config.getDouble("light-katanas.copper.attack-damage"), AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
         im.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, damage);
         item.setItemMeta(im);
         lightCopperKatana = item;
